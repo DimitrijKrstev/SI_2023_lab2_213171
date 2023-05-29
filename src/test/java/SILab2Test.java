@@ -21,6 +21,8 @@ public class SILab2Test {
         assertFalse(SILab2.function(new User(null, "!asdasd", "dimi@example.com"), users));
         //A-C-E-M-O-T-U
         assertFalse(SILab2.function(new User("backo", "!asdasdas dasdw2dw", "dimi2examplecom"), users));
+        //A-C-E-F-G-H-J-G-L-M-O-P-Q-P-S-T-U
+        assertFalse(SILab2.function(new User("backo", "asdasdasdasdw2dw", "dimi2@example.com"), users));
         //A-C-D-E-F-G-H-J-G-L-M-O-P-Q-R-U
         assertTrue(SILab2.function(new User("backo", "!asdasdasdasdw2dw", "dimi3@example.com"), users));
     }
