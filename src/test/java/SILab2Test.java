@@ -30,7 +30,7 @@ public class SILab2Test {
     @Test
     void multipleCondition(){
         RuntimeException e;
-        e = assertThrows(RuntimeException.class, () -> SILab2.function(new User(null, null, null), null));
+        e = assertThrows(RuntimeException.class, () -> SILab2.function(null, null));
         assertEquals("Mandatory information missing!", e.getMessage());
 
         e = assertThrows(RuntimeException.class, () -> SILab2.function(new User("dimi", null, null), null));
