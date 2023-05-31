@@ -10,20 +10,24 @@ public class SILab2Test {
     void testEveryBranch(){
         RuntimeException e;
         //A-B-U
+        //Sluchaj kade se ispolnuva B (user == null)
         e = assertThrows(RuntimeException.class, () -> SILab2.function(null, null));
         assertEquals("Mandatory information missing!", e.getMessage());
 
         List<User> users = new LinkedList<>();
-        users.add(new User(null, "!asdasd", "dimi@example.com"));
+        users.add(new User("dimi", "!asdasd", "dimi@example.com"));
 
         //A-C-D-E-F-G-H-I-J-K-G-L-M-N-U
-        //password length < 8
-        assertFalse(SILab2.function(new User(null, "!asdasd", "dimi@example.com"), users));
-        //A-C-E-M-O-T-U
-        assertFalse(SILab2.function(new User("backo", "!asdasdas dasdw2dw", "dimi2examplecom"), users));
+        //Se ispolnuva I,K(users contains user), N(password length < 8)
+        assertFalse(SILab2.function(new User("dimi", "!asdasd", "dimi@example.com"), users));
+        //A-C-D-E-M-O-T-U
+        //Se ispolnuva D(username == null), E-M(email nema @), O-T-U(password ima " ")
+        assertFalse(SILab2.function(new User(null, "!asdasdas dasdw2dw", "dimi2examplecom"), users));
         //A-C-E-F-G-H-J-G-L-M-O-P-Q-P-S-T-U
+        //Se ispolnuva P-S-T-U(password nema special character)
         assertFalse(SILab2.function(new User("backo", "asdasdasdasdw2dw", "dimi2@example.com"), users));
         //A-C-D-E-F-G-H-J-G-L-M-O-P-Q-R-U
+        //Se ispolnuva R-U(password ima special character)
         assertTrue(SILab2.function(new User("backo", "!asdasdasdasdw2dw", "dimi3@example.com"), users));
     }
 
